@@ -31,13 +31,14 @@ public class WSObtenerOrden : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GenerarOrden(string platoPrincipal, int cantidadPrincipal, string acompañamiento, int cantidadAcompaña,string DireccionEntrega) {
+    public string GenerarOrden(string platoPrincipal, int cantidadPrincipal, string acompañamiento, int cantidadAcompaña, string DireccionEntrega)
+    {
 
         SqlConnection conn = new SqlConnection();
         conn.ConnectionString = "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Restaurante_SA; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
         conn.Open();
         SqlCommand cmd = new SqlCommand("insert into Pedidos values(@Plato_entrada,@Cantidad_Entrada,@Acompania,@Cantidad_acompaña,@Direccion_Entrega,@Estado)", conn);
-        cmd.Parameters.AddWithValue("@Plato_entrada",platoPrincipal);
+        cmd.Parameters.AddWithValue("@Plato_entrada", platoPrincipal);
         cmd.Parameters.AddWithValue("@Cantidad_Entrada", cantidadPrincipal);
         cmd.Parameters.AddWithValue("@Acompania", acompañamiento);
         cmd.Parameters.AddWithValue("@Cantidad_acompaña", cantidadAcompaña);
@@ -45,9 +46,9 @@ public class WSObtenerOrden : System.Web.Services.WebService
         cmd.Parameters.AddWithValue("@Estado", "Creado");
         cmd.ExecuteNonQuery();
         conn.Close();
-        
+
         return "Orden Ingresada";
-    
+    }
     [WebMethod]
     public DataSet ListarOrden()
     {
@@ -70,5 +71,5 @@ public class WSObtenerOrden : System.Web.Services.WebService
         cmd.ExecuteNonQuery();
         conn.Close();
 
-    }
+    
 }
