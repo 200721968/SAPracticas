@@ -63,13 +63,14 @@ public class WSObtenerOrden : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void EntregarOrden(int id) {
+    public void EntregarOrden(int id)
+    {
         SqlConnection conn = new SqlConnection();
         conn.ConnectionString = "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Restaurante_SA; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
         conn.Open();
-        SqlCommand cmd = new SqlCommand("Update Pedidos set Estado='Entregado' Where id ="+id+";", conn);
+        SqlCommand cmd = new SqlCommand("Update Pedidos set Estado='Entregado' Where id =" + id + ";", conn);
         cmd.ExecuteNonQuery();
         conn.Close();
 
-    
+    }
 }
