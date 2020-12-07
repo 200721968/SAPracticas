@@ -47,7 +47,7 @@ public class WSObtenerOrden : System.Web.Services.WebService
         conn.Close();
         
         return "Orden Ingresada";
-    }
+    
     [WebMethod]
     public DataSet ListarOrden()
     {
